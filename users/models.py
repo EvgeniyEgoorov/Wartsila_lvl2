@@ -12,9 +12,6 @@ class ProfileManager(BaseUserManager):
     use_in_migrations = True
 
     def _create_user(self, username, password, **extra_fields):
-        """
-        Create and save a user with the given username, and password.
-        """
         if not username:
             raise ValueError("The given username must be set")
         GlobalUserModel = apps.get_model(
@@ -32,8 +29,11 @@ class ProfileManager(BaseUserManager):
 
 
 class Profile(AbstractBaseUser):
-    login = models.CharField(max_length=50, unique=True)
-    bio = models.CharField(max_length=300)
+    login = models.CharField(max_length=30, unique=True)
+    first_name = models.CharField(max_length=30, blank=True, null=True)
+    last_name = models.CharField(max_length=30, blank=True, null=True)
+    city = models.CharField(max_length=30, blank=True, null=True)
+    bio = models.TextField(max_length=500, blank=True, null=True)
     is_staff = models.BooleanField(default=False)
     created_at = models.DateField(auto_now_add=True)
 
