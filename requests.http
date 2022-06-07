@@ -8,30 +8,40 @@ POST http://localhost:8000/profiles/
 Content-Type: application/json
 
 {
-    "login": "login_3",
-    "password": "password_3",
-    "bio": "I'm from Togliatti"
+    "login": "login_4",
+    "password": "password_4",
+    "first_name": "Harry",
+    "last_name": "Oldman",
+    "city": "Texas",
+    "bio": "I'm a lawyer"
 
 }
 
 ######
 
 # Modifies an existing profile
-PUT http://localhost:8000/profiles/4/
+PUT http://localhost:8000/profiles/3/
 Content-Type: application/json
-Authorization: Token 6fc50e476585a0c58b8ce9c9650067b1362ebc23
+Authorization: Token 071a086a36b4789d23debae24214ff358fb8e775
 
 {
-    "bio": "It's me!"
+    "login": "login_3",
+    "password": "password_3",
+    "bio": "Looking for a job"
 }
 
 ######
 
 # Removes an existing profile
-DELETE http://localhost:8000/profiles/6/
-Authorization: Token 206365bc097ff0a04b64e62e4c9d062551eb7091
+DELETE http://localhost:8000/profiles/3/
+Authorization: Token 18adce330e70f32a937e8963379b7cf98f33d886
 
 ######
 
 # Search a profile by id
-GET http://localhost:8000/profiles/9/
+GET http://localhost:8000/profiles/3/
+
+#####
+
+# Filter by multiple fields
+GET http://localhost:8000/profiles/?first_name=Harry&city=Texas
