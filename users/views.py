@@ -9,6 +9,7 @@ class ProfileViewSet(ModelViewSet):
     queryset = Profile.objects.all()
     serializer_class = ProfileSerializer
     permission_classes = [IsOwnerOrReadOnly]
+    filterset_fields = ['login', 'first_name', 'last_name', 'city', 'created_at']
 
 
 
