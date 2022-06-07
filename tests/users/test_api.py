@@ -1,14 +1,9 @@
 import pytest
 from model_bakery import baker
 from rest_framework.test import APIClient
+import json
 
 from users.models import Profile
-import logging
-
-
-logger = logging.getLogger(__name__)
-logging.disable(logging.NOTSET)
-logger.setLevel(logging.DEBUG)
 
 
 @pytest.fixture
@@ -20,6 +15,7 @@ def client():
 def profiles_factory():
     def factory(*args, **kwargs):
         return baker.make(Profile, *args, **kwargs)
+
     return factory
 
 
@@ -75,15 +71,15 @@ def test_post_new_profile(client):
 
 
 @pytest.mark.django_db
-def test_put_profile(client):
+def test_patch_profile(client):
     profile = Profile.objects.create_user(
         username='login',
         password='my_password'
     )
     data = {'bio': 'Hello from here!'}
-    header = {'HTTP_AUTHORIZATION': profile.auth_token.key}
-    response = client.put(
-        f'/profiles/{profile.id}', content_type='application/json', data=data, follow=True, **header)
+    header = {'HTTP_AUTHORIZATION': f'Token {profile.auth_token.key}'}
+    response = client.patch(
+        f'/profiles/{profile.id}/', content_type='application/json', data=json.dumps(data), follow=True, **header)
     assert response.status_code == 200
     updated_data = response.json()
     assert updated_data['bio'] == data['bio']
@@ -95,8 +91,8 @@ def test_delete_profile(client):
         username='login',
         password='password',
     )
-    header = {'Authorization': profile.auth_token.key}
-    response = client.delete(f'/profiles/{profile.id}', headers=header, follow=True)
+    header = {'HTTP_AUTHORIZATION': f'Token {profile.auth_token.key}'}
+    response = client.delete(f'/profiles/{profile.id}/', follow=True, **header)
     assert response.status_code == 204
     response2 = client.get('/profiles/')
     data = response2.json()
