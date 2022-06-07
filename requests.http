@@ -8,33 +8,30 @@ POST http://localhost:8000/profiles/
 Content-Type: application/json
 
 {
-    "login": "login_4",
-    "password": "password_4",
-    "first_name": "Harry",
-    "last_name": "Oldman",
-    "city": "Texas",
-    "bio": "I'm a lawyer"
-
+    "login": "login_5",
+    "password": "password_5",
+    "first_name": "Jack",
+    "last_name": "Le",
+    "city": "Paris",
+    "bio": "Im a student"
 }
 
 ######
 
 # Modifies an existing profile
-PUT http://localhost:8000/profiles/3/
+PATCH http://localhost:8000/profiles/4/
 Content-Type: application/json
-Authorization: Token 071a086a36b4789d23debae24214ff358fb8e775
+Authorization: Token e504f1b92b3c2cd4c750fbb22c5308840c7dd58f
 
 {
-    "login": "login_3",
-    "password": "password_3",
-    "bio": "Looking for a job"
+    "bio": "Looking for a job!"
 }
 
 ######
 
 # Removes an existing profile
 DELETE http://localhost:8000/profiles/3/
-Authorization: Token 18adce330e70f32a937e8963379b7cf98f33d886
+Authorization: Token 071a086a36b4789d23debae24214ff358fb8e775
 
 ######
 
