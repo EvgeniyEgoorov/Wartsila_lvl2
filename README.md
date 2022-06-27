@@ -1,30 +1,22 @@
-## Гайд:
-Список доступных методов API и их описание представлены в `requests.http`. 
-Для отправки HTTP запросов использовал REST Client для Visual Studio Code.
+## Guide:
+The list of available API methods and their description are presented in `requests.http'.
+To send HTTP requests, I used the [REST Client](https://marketplace.visualstudio.com/items?itemName=humao.rest-client) for Visual Studio Code.
 
-## Условие задачи: 
-cпроектировать API для простого менеджера учетных записей (пользователей)
+## Task condition:
+To design an API for a simple account manager (users)
 
- 
 
-#### API должно позволять:
+#### The API should allow:
 
---------------------------------
+- display a list of all accounts
 
-- вывести список всех учетных записей
+- display account information by ID
 
-- вывести информацию об учётной записи по идентификатору
+- provide the ability to add an account
 
-- обеспечить возможность добавить учетную запись
+- provide the ability to change the account
 
-- обеспечить возможность изменить учетную запись
+- provide the ability to delete an account
 
-- обеспечить возможность удалить учетную запись
+- provide account search by one or more attributes
 
-- обеспечить поиск учётной записи по одному и более атрибутам
-
- 
-
-Предложите набор атрибутов учетной записи, список методов API и возможные варианты реализации на Python.
-
-Предложение вариантов/способов деплоя и мониторинга работоспособности API будет дополнительным плюсом.
