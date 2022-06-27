@@ -1,5 +1,5 @@
 ## Guide:
-The list of available API methods and their description are presented in `requests.http'.
+The list of available API methods and their description are presented in `requests.http`.
 To send HTTP requests, I used the [REST Client](https://marketplace.visualstudio.com/items?itemName=humao.rest-client) for Visual Studio Code.
 
 ## Task condition:
